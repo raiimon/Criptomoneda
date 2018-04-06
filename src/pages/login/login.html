@@ -1,0 +1,57 @@
+
+
+<ion-header>
+
+</ion-header>
+
+<ion-content class="background" padding>
+
+
+   <div class="contenido">
+
+    <div class="contfoto">
+
+      <img src="assets/imgs/foloLogo.png">
+
+    </div>
+
+    <div class="contUs">
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" #username></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" #password></ion-input>
+        </ion-item>
+
+
+      </ion-list>
+
+    </div>
+
+  </div>
+
+  <div class="text">
+    <p>  ¿No estas registrado?  </p>
+
+    <button ion-button (click)="presentLoading()" >Pulsa aqui</button>
+
+  </div>
+
+  <div class="text">
+    <p>  ¿No te acuerdas la contraseña?  </p>
+
+    <button ion-button (click)="recoverPassword()" >Pulsa aqui</button>
+
+  </div>
+
+    <div>
+  <button block ion-button (click)="signInUser()" > Sign In </button>
+
+    </div>
+
+</ion-content>
