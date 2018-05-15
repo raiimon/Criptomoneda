@@ -32,9 +32,10 @@ Emulate
 
 ### Android
 Build
-`ionic cordova platform add ios`
+`ionic cordova platform add android`
+
 Emulate
-`ionic cordova emulate ios`
+`ionic cordova emulate android`
 
 ## Built With
 Ionic - Hybrid mobile app framework
