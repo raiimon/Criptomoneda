@@ -47,4 +47,4 @@ Cryptocurrency Icons - A set of icons for all the main cryptocurrencies
 in this project we have been inspired by the coinbase app
 
 ## License
-This project is licensed under the GNU GPLv3 License - see the LICENSE.md file for details
+This project is licensed under the GNU GPLv3 License - see the [LICENSE.md](https://github.com/jsnomad/ionic-cryptocurrency/blob/master/LICENSE.md). file for details
