@@ -1,6 +1,6 @@
 # CryptoMine
 
-![2014-10-22 11_35_09](https://cloud.githubusercontent.com/assets/39191/4741874/9890757a-5a1a-11e4-9a71-3f64bd66b7ab.gif)
+![2014-10-22 11_35_09](https://im2.ezgif.com/tmp/ezgif-2-fcb4996723.gif)
 
 ## Getting Started
 Prerequisites
