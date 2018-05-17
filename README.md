@@ -1,6 +1,6 @@
 # CryptoMine
 
-![2014-10-22 11_35_09](https://im2.ezgif.com/tmp/ezgif-2-fcb4996723.gif)
+![2014-10-22 11_35_09](https://im2.ezgif.com/tmp/ezgif-2-932416d9ed.gif)
 
 ## Getting Started
 Prerequisites
