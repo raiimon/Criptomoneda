@@ -1,6 +1,6 @@
 # CryptoMine
 
-![](https://media.giphy.com/media/ja9cR79j590SGrIrYw/giphy.gif)
+![](http://i.imgur.com/OUkLi.gif)
 
 ## Getting Started
 Prerequisites
