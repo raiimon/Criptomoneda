@@ -1,0 +1,185 @@
+<ion-content class="background">
+  <ion-card class="card-login">
+
+    <ion-item>
+      <h2 style="color: red; text-align: center">GPU Mining</h2>
+    </ion-item>
+
+    <ion-list no-lines>
+
+      <label class="text-or" style="color: green">Introduction</label>
+      <div class="customHr"></div>
+
+      <p class="principal-text">Ethereum is quite difficult to get mining on windows - although with a bit of help and
+        following the tutorial
+        below you can get it up and running and start your own ethereum mining project in 15 mins.</p>
+      <p class="principal-text">Running a CPU you might be able to generate 0.15 Mega Hashes whilst with a decent GPU
+        with enough memory you
+        could be doing upwards 25 Mega Hashes (you can choose a GPU to mine ether here and use our guide on how to
+        choose a GPU to mine ether). So in terms of total efficiency, taking into account electrical costs, a GPU
+        is definitely worth it even if it costs you $200.</p>
+
+    </ion-list>
+
+    <ion-list no-lines>
+
+      <label class="text-or" style="color: green">Installing GETH, Syncing the Blockchain and creating your own
+        address!</label>
+      <div class="customHr"></div>
+
+      <p class="principal-text">The first thing you need to do is go to this link download Geth. Geth is the program
+        that communicates with the
+        Ethereum Network and acts as the a relay between your computer, its hardware and the rest of the ethereum
+        network computers so if a block is mined by another computer your Geth program will pick it up and then pass
+        on the new information onto your GPU or CPU for mining. </p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20667/geth-ethereum.jpg">
+
+      <p class="principal-text">You need to unzip the GETH file and move it to a location on your hard drive. In this
+        case we'll move it to the
+        hard drive, usually (C:) - which will make the next step easier. All you need to do is copy the file you
+        have downloaded and unzipped and move it to the hard drive folder. </p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20671/geth-c.jpg">
+
+      <p class="principal-text">Now you need to run the program you just downloaded. To do this you need to run Command
+        Prompt. You can do this
+        by searching in the search function in Windows for "CMD" and then clicking on it when it shows up. </p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20664/cmd-open.png">
+
+      <p class="principal-text">Now you need to run the program you just downloaded. To do this you need to run Command
+        Prompt. You can do this
+        by searching in the search function in Windows for "CMD" and then clicking on it when it shows up. </p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20664/cmd-open.png">
+
+      <p class="principal-text"> Command Prompt is now open - and can look terrifying to people who aren't familiar with
+        it. The Command Prompt
+        box usually has C:\Users\Username> showing in it - where Username is your username - so if you log into your
+        computer with the username cryptocompare then the command prompt box will open with C-Users-cryptocompare>.
+        You need to tell the computer to look in another place Type cd / into the newly opened command prompt. You
+        should now see "C:\", You have just used the cd command or "change directory" command to make command prompt
+        look at the C:/ drive.</p>
+
+      <p class="principal-text">You need to tell your Geth program to create a new account. As you have installed it in
+        your user directory in
+        Step 2 then it is just a simple case of typing in "geth account new" and then pressing return/enter. This
+        should look like this "C:\>geth account new". </p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20666/password-geth.jpg">
+
+      <p class="principal-text">After hitting the enter button in Step 5, you will be asked to enter a password - N.B.
+        you will not be able to
+        see what you are typing in so type it carefully. This is the password that locks your account and keeps your
+        Private key safe - if you lose this password you will lose all your Ether attached to the wallet held by
+        that Private key. Once you have entered your password and confirmed it by entering it a second time you will
+        have created a new account! Congratulations your about a third of the way there.</p>
+
+      <p class="principal-text">You need to tell your Geth Program to start communicating with the rest of the Ethereum
+        network. You do this
+        by typing in "geth --rpc" - this should look like "C:\>geth --rpc" (on the latest version you should try:
+        geth --rpc --fast --cache=1024) Press enter and the screen should start downloading the blockchain for Ethereum
+        - at this point you are synchronising with the rest of the Ethereum network. This can take a while depending
+        on your internet speed and the current size of the blockchain, anywhere between 20 min and multiple hours.
+        Sometimes your firewall can block this process - just click allow access. Keep this cmd open, you will need
+        this to run in the background in order to be able to mine. Also make sure you start mining only after your
+        blockchain is synchronised, not before. Due to The DAO hard fork you will have to specify if you want to
+        mine on the hard fork chain or on the chain without the hard fork. To mine Ethereum (ETH) use geth --rpc
+        --support-dao-fork in order to mine Ethereum Classic (ETC) use: geth --rpc --oppose-dao-fork</p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20673/geth-rpc.jpg">
+
+    </ion-list>
+
+    <ion-list no-lines>
+
+      <label class="text-or" style="color: green">Installing the Mining Software and Starting to Mine</label>
+      <div class="customHr"></div>
+
+      <p class="principal-text"> Now you need to download Ethminer which makes your GPU or CPU run the hashing algorithm
+        that is integral to securing
+        the Ethereum network through proof of work. You can download this here and be sure to scroll down to the
+        bottom of the page to get the right version - the latest and most up to date one is right at the end.</p>
+
+      <p class="principal-text">You need to open up another command prompt as in step 4 - so your going to get two scary
+        looking boxes. Simply
+        click right click on your already open command prompt in the taskbar at the bottom of the page and click
+        on command prompt in the menu that appears. A new command prompt should open with "C:usersusername>". This
+        is the wrong place to look for etherminer so you need to tell it the right place to find it.</p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20672/2nd-cmd.png">
+
+      <p class="principal-text">Type "cd /" into the newly opened command prompt which should look like this and then
+        press enter. You should
+        now see "C:\", You have just used the "cd" command or "change directory" command to make command prompt look
+        at the C:/ drive - not your user file.</p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/20664/cmd-open.png">
+
+      <p class="principal-text">Type in "cd prog" and then press the tab button. This should look like this C:\>cd prog
+        and then press "tab"
+        which will automatically complete the phrase for the closest fit found in the C: drive just like autotext
+        does on your Iphone. After pressing "tab", you should see C:/> cd "Program Files" and press enter which should
+        give you a new line saying "C:\Program Files>".</p>
+
+      <p class="principal-text">Type in cd cpp and then press tab and then enter. This is taking you into the newly
+        installed Ethereum Mining
+        software folder. And this should look like this after pressing tab C:\Program Files>cd cpp-ethereum and pressing
+        enter gives you C:\Program Files\cpp-ethereum>.</p>
+
+      <p class="principal-text">GPU mining (only do this after your blockchain is synchronised): Type in ethminer -G and
+        press enter and then
+        you should start mining with your GPU after building a DAG file which can take around ten minutes. There
+        can be problems at this point. For example the program might say that you have insufficient memory on your
+        Graphics card to mine the with Ethereum's Ethash algorithm. If this is the case you can still mine with your
+        CPU or go out and buy a new graphics card! You can see our graphics cards and compare their return on
+        investments
+        here and check out our guide on how to pick an ethereum mining graphics card here. We've also added a guide
+        on how to build your ethereum mining rig.</p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/350680/ethereum_ethminer_g.png">
+
+      <p class="principal-text">CPU mining: Type in ethminer and press "enter" and you will start mining with your CPU.
+        Again you will need to
+        create a DAG file the first time you do this which can take some time. But after that is complete your Geth
+        program downloaded in step 1 should start talking to your ethminer program and you should start mining!</p>
+
+      <p class="principal-text">Hashing Power benchmark: If you want to get an estimation of your hashing power you can
+        run ethminer -M (for
+        CPU mining) or ethminer -G -M (for GPU mining). The command will run and you should get a result similar
+        to the image bellow.</p>
+      <img class="myphoto" src="https://www.cryptocompare.com/media/350715/ethereum-gpu-mining-benchmark.png">
+
+    </ion-list>
+
+    <label class="text-or" style="color: green">FAQ</label>
+    <div class="customHr"></div>
+
+    <p class="principal-text">If you are having issues getting your GPU to mine type ethminer --opencl-platform 1 to fix
+      it for Nvidia. This usually
+      happens when you have an integrated GPU as well as a dedicated one. </p>
+
+    <p class="principal-text">If you are having issues finding peers, try to use: geth --nat=none</p>
+
+    <p class="principal-text">If you are using ATI cards, in order to optimize your mining open a cmd prompt and
+      run:</p>
+    <p class="principal-text">setx GPU_FORCE_64BIT_PTR 0</p>
+    <p class="principal-text">setx GPU_MAX_HEAP_SIZE 100</p>
+    <p class="principal-text">setx GPU_USE_SYNC_OBJECTS 1</p>
+
+
+    <p class="principal-text">Also when you run ethminer, try using the extra params: --cl-global-work 16834
+      --cl-local-work 256. </p>
+
+    <ion-list no-lines>
+
+      <label class="text-or" style="color: green">Video</label>
+      <div class="customHr"></div>
+
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/K3AVeIJPQUc" frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+      </div>
+    </ion-list>
+
+  </ion-card>
+</ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+    <div text-center style="color: white" (click)="backPage()"><p>⇦ Go to tutorial page</p></div>
+  </ion-toolbar>
+</ion-footer>

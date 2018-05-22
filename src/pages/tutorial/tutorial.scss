@@ -1,0 +1,30 @@
+page-tutorial {
+    .background-header{
+        background: #102D49;
+        color: white;
+        text-align: center;
+        font-family: 'Titan One', cursive;
+        font-size: 50%;
+      }
+      .background-footer{
+        background-color: #102D49;
+        font-family: 'Roboto Condensed', sans-serif;
+      }
+      .card-login{
+        background-color: #102D49;
+        border-radius: 5px;
+        position: relative;
+        align-content: center;
+        margin-block-start: 2%;
+      }
+      .myOverlay{
+        width: 90%;
+        height: 80px;
+        position: fixed;
+        text-align: center;
+        font-size: 1.7em;
+        font-family: 'Titan One', cursive;
+        bottom: 0px;
+        color: rgb(217, 255, 0);
+    }
+}
