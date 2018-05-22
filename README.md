@@ -1,4 +1,4 @@
-# Criptomoneda
+# CryptoMine
 
 Getting Started
 
