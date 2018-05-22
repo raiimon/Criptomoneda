@@ -1,30 +1,37 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AngularFireAuth} from "angularfire2/auth";
+import {IonicPage, NavController, MenuController} from 'ionic-angular';
+import {TiendagraficPage} from "../tiendagrafic/tiendagrafic";
+import {TiendacoinPage} from "../tiendacoin/tiendacoin";
+import {TiendasicPage} from "../tiendasic/tiendasic";
 
-/**
- * Generated class for the TiendaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-tienda',
   templateUrl: 'tienda.html',
 })
+
 export class TiendaPage {
 
-  email : String
+  constructor(
+    public navCtrl: NavController,
+    public menu: MenuController
 
-  constructor(private fire: AngularFireAuth ,public navCtrl: NavController, public navParams: NavParams) {
+    ) {
+      this.menu.enable(true);
 
-  this.email = fire.auth.currentUser.email
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TiendaPage');
-  }
+  grafic(){
 
+    this.navCtrl.setRoot(TiendagraficPage);
+  }
+  coin(){
+
+    this.navCtrl.setRoot(TiendacoinPage);
+  }
+  asic(){
+
+    this.navCtrl.setRoot(TiendasicPage);
+  }
 }

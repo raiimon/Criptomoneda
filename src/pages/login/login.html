@@ -1,57 +1,47 @@
+<ion-content class="background">
+  
+  <h1 class="text-header">Login</h1> 
 
+  <ion-card class="card-login">
+    <ion-card-content >
+      <ion-list no-lines >
+        <ion-list class="label">
 
-<ion-header>
+          <ion-item class="formulario">
+              <ion-icon name="md-person" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Username" #username></ion-input>
+          </ion-item>
 
-</ion-header>
+          <ion-item class="formulario">
+            <ion-icon name="md-lock" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Password" type="password"  #password></ion-input>
+          </ion-item>
+      
+        </ion-list>
+          <button ion-button outline block color="danger"  (click)="signInUser()">Login</button>
+        </ion-list>
 
-<ion-content class="background" padding>
+        <label class="text-or">OR</label>
+      
+      <ion-row>
+        <ion-col>
 
+          <button ion-button icon-left color="danger"  style="font-family: 'Open Sans', sans-serif" block (click)="googleLogin()">
+            <ion-icon name="logo-google"></ion-icon>
+            <div>login with Google</div>
+          </button>
 
-   <div class="contenido">
+        </ion-col>
+      </ion-row>
 
-    <div class="contfoto">
-
-      <img src="assets/imgs/foloLogo.png">
-
-    </div>
-
-    <div class="contUs">
-      <ion-list>
-
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text" #username></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" #password></ion-input>
-        </ion-item>
-
-
-      </ion-list>
-
-    </div>
-
-  </div>
-
-  <div class="text">
-    <p>  ¿No estas registrado?  </p>
-
-    <button ion-button (click)="presentLoading()" >Pulsa aqui</button>
-
-  </div>
-
-  <div class="text">
-    <p>  ¿No te acuerdas la contraseña?  </p>
-
-    <button ion-button (click)="recoverPassword()" >Pulsa aqui</button>
-
-  </div>
-
-    <div>
-  <button block ion-button (click)="signInUser()" > Sign In </button>
-
-    </div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+    <label text-center style="color: white" (click)="recoverPassword()"><p>Forgot Password ?</p></label>
+    <label text-center style="color: white" (click)="registro()"><p>If you're a new member. REGISTER!</p></label>
+ </ion-toolbar>
+</ion-footer>

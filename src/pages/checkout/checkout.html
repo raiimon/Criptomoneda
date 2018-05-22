@@ -1,0 +1,139 @@
+<ion-header class="background-header">
+
+  <ion-navbar transparent>
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="currentStep">
+      <ion-segment-button value="Address">
+        Address
+      </ion-segment-button>
+      <ion-segment-button value="Payment">
+        Payment
+      </ion-segment-button>
+      <ion-segment-button value="Review">
+        Review
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+
+  <ion-list [hidden]="currentStep !== 'Address'">
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">Email</ion-label>
+      <ion-input type="email" style="color: white" placeholder="proyectocriptomoneda@gmail.com" required="required" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">Full name</ion-label>
+      <ion-input type="text" placeholder="You name" style="color: white" required="required" [(ngModel)]="full_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">Country</ion-label>
+      <ion-input type="text" style="color: white" placeholder="Spain" required="required" [(ngModel)]="country"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">State</ion-label>
+      <ion-input style="color: white" type="text" placeholder="Valencia" required="required" [(ngModel)]="state"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">City</ion-label>
+      <ion-input type="text" style="color: white" placeholder="Valencia" required="required" [(ngModel)]="city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">Postal code</ion-label>
+      <ion-input type="number" style="color: white" placeholder="46001" required="required" [(ngModel)]="postal_code"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed style="color: tomato">Address</ion-label>
+      <ion-input type="text" style="color: white" placeholder="Carrer del Pintor Domingo" [(ngModel)]="address1"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+  <div [hidden]="currentStep !== 'Payment'">
+
+    <ion-item>
+      <ion-label style="color: tomato" fixed>Card number</ion-label>
+      <ion-input type="number" style="color: white" maxlength="16" placeholder="4723039011473655" [(ngModel)]="card"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="color: tomato" fixed>CVV</ion-label>
+      <ion-input type="number" style="color: white" maxlength="3" placeholder="012" [(ngModel)]="cvv"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="color: tomato" fixed>Expiration</ion-label>
+      <ion-datetime style="color: white" displayFormat="MM/YYYY" pickerFormat="MMMM YYYY" placeholder="MM/YYYY" min="2018" max="2024-12-31"
+        [(ngModel)]="date">
+      </ion-datetime>
+    </ion-item>
+
+  </div>
+
+
+  <div [hidden]="currentStep !== 'Review'">
+
+    <ion-card class="card-login" style="border-top: 1%">
+
+      <ion-card-header style="color: tomato;text-align: center">
+        Lista de Productos
+      </ion-card-header>
+
+      <ion-card-content *ngIf="reviewArray == 0" style="color: white;text-align: center">
+        ¡ La tienda esta vacia !
+      </ion-card-content>
+
+      <ion-list style="background: #f53d3d">
+
+        <ion-item *ngFor="let products of reviewArray; let i = index;" style="background: tomato">
+
+          <ion-avatar item-left>
+            <img src="{{products.image}}">
+          </ion-avatar>
+          <h2 style="color: white">{{products.name}} </h2>
+
+          <p style="color: white">{{products.price}}€</p>
+
+        </ion-item>
+      </ion-list>
+      <ion-card-content>
+        <div style="color: white;text-align: center">Total for this order is {{total.toFixed(2)}} €</div>
+      </ion-card-content>
+
+
+    </ion-card>
+  </div>
+
+
+</ion-content>
+
+
+<ion-footer class="background-footer">
+  <ion-toolbar>
+
+    <button ion-button block color="danger" (click)=proceedToNextStep() *ngIf="currentStep !== 'Review'">
+      Proceed
+    </button>
+
+    <button ion-button block color="danger" (click)=completeCheckout() *ngIf="currentStep === 'Review'">
+      Complete checkout
+    </button>
+
+  </ion-toolbar>
+
+  <ion-toolbar transparent>
+      <div text-center style="color: white" (click)="backPage()"><p>⇦ Go to shop page</p></div>
+    </ion-toolbar>
+</ion-footer>

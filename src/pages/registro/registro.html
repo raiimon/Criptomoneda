@@ -1,31 +1,53 @@
 
-<ion-header>
+<ion-content class="background">
 
-  <ion-navbar>
-    <ion-title>Registro</ion-title>
-  </ion-navbar>
+  <h1 class="text-header">Register</h1>
 
-</ion-header>
+  <ion-card class="card-login">
+    <ion-card-content>
+      <ion-list no-lines >
 
-  <ion-content padding>
+        <label class="text-or">Personal data</label>
+        <div class="customHr">.</div>
 
-    <ion-list>
+        <ion-list class="list-form">
 
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" #username></ion-input>
-      </ion-item>
+          <ion-item class="formulario">
+            <ion-icon name="md-person" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Name" [(ngModel)]="name"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" #password></ion-input>
-      </ion-item>
+          <ion-item class="formulario" style="border-bottom: transparent !important;">
+            <ion-icon name="md-person" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Surname" type="surname" [(ngModel)]="surname"></ion-input>
+          </ion-item>
 
-    </ion-list>
+          <label class="text-or">Mail and Password</label>
+          <div class="customHr">.</div>
 
-    <div padding>
-      <button block ion-button (click)="registerUser()" item-left>Registrar</button>
-    </div>
+          <ion-item class="formulario">
+            <h2 class="text-or">Mail and Password</h2>
+            <ion-icon name="md-mail" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Email" [(ngModel)]="email"></ion-input>
+          </ion-item>
 
+          <ion-item class="formulario" style="border-bottom: transparent !important;">
+            <ion-icon name="md-lock" item-start></ion-icon>
+            <ion-input class="form-input" placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
 
-  </ion-content>
+        </ion-list>
+        <button ion-button icon-left color="danger" block (click)="registerUser()">
+          <div>Sign Up</div>
+        </button>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+    <div text-center style="color: white" (click)="goBack()"><p>⇦ Go to login page</p></div>
+  </ion-toolbar>
+</ion-footer>

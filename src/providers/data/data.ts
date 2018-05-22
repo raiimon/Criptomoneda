@@ -1,11 +1,10 @@
-/**
- *  Ramon Casaña Martinez
- */
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataProvider {
@@ -14,11 +13,9 @@ export class DataProvider {
 
   constructor(public http: HttpClient) {
 
-
   }
 
   getCoins(coins) {
-
     let coinlist = '';
 
     coinlist = coins.join();
@@ -34,14 +31,35 @@ export class DataProvider {
 
   getChart(coin) {
     return this.http.get("https://min-api.cryptocompare.com/data/histoday?fsym="+coin+"&tsym=USD&limit=30&aggregate=1")
+    .map(result => this.result = result);
+  }
+
+  allCoins() {
+    return this.http.get("https://min-api.cryptocompare.com/data/all/coinlist")
       .map(result => this.result = result);
   }
-  allCoins() {
-    let headers = new HttpHeaders()
-      .set("Access-Control-Allow-Origin", "*");
 
-    return this.http.get("https://www.cryptocompare.com/api/data/coinlist/", {headers: headers})
+  /// En desarollo ///
+  BTC(){
+    return this.http.get("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=EUR")
       .map(result => this.result = result);
+
+  }
+
+  ETH(){
+    return this.http.get("https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR")
+      .map(result => this.result = result);
+  }
+
+  LTC(){
+    return this.http.get("https://min-api.cryptocompare.com/data/price?fsym=LTC&tsyms=EUR")
+      .map(result => this.result = result);
+  }
+
+  XRP(){
+    return this.http.get("https://min-api.cryptocompare.com/data/price?fsym=XRP&tsyms=EUR")
+      .map(result => this.result = result);
+
   }
 
 }

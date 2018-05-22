@@ -1,12 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { Component, ViewChild} from '@angular/core';
+import {Nav, Platform, ModalController} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
 
+/* Declaramos las Pages para después mostrarlas en el menú */
 import {PrincipalPage} from "../pages/principal/principal";
 import {LoginPage} from "../pages/login/login";
 import {TiendaPage} from "../pages/tienda/tienda";
+import {AjustesPage} from "../pages/ajustes/ajustes";
+import {TutorialPage} from '../pages/tutorial/tutorial';
+/* ------------------------------------------------------- */
 
+/* Declaramos la librería de SplashScreen y timer para declarar
+ y ajustar el tiempo de muestra del Splash Screen */
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {timer} from 'rxjs/observable/timer';
+/* ------------------------------------------------------- */
 
 @Component({
   templateUrl: 'app.html'
@@ -16,31 +24,35 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  showSplash = true;
+  
+  constructor(public platform: Platform,
+              public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
+              modalCtrl: ModalController
+              
+              ) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Principal', component: PrincipalPage },
-      { title: 'Tienda', component: TiendaPage },
+      {title: 'Coin Charts', component: PrincipalPage, icon:"md-analytics"},
+      {title: 'Shop', component: TiendaPage, icon:"md-cart"},
+      {title: 'Mining Tutorials', component: TutorialPage, icon:"md-book"},
+      {title: 'Settings', component: AjustesPage, icon:"md-construct"}
     ];
-
   }
-
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      /* Ajustamos la duración del Splash*/
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      timer(2000).subscribe(() => this.showSplash = false);
     });
   }
-
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+        this.nav.setRoot(page.component);
   }
 }

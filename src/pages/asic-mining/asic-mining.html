@@ -1,0 +1,177 @@
+
+<ion-content class="background">
+  <ion-card class="card-login">
+
+    <ion-item>
+      <h2 style="color: red; text-align: center">ASIC Mining</h2>
+    </ion-item>
+    <ion-card-content style="text-align: center">
+
+      <ion-list no-lines>
+
+        <label class="text-or" style="color: green">Introduction</label>
+        <div class="customHr"></div>
+
+        <p class="principal-text">8 years after its creation, Bitcoin has revalued so much that it has reformulated the rules of the financial game
+          around the world.</p>
+        <p class="principal-text">And nowadays its value continues to increase in such a way that every day new entrepreneurs are necessarily learning
+          how to earn money with bitcoins.</p>
+
+      </ion-list>
+
+      <ion-list no-lines>
+
+        <label class="text-or" style="color: green">Bitcoin Mining and Antminer S9</label>
+        <div class="customHr"></div>
+
+        <p class="principal-text">If this is the first time you set up an Antminer S9, then you may find yourself a little lost on how to connect your
+          bitcoin miner to join a pool or mining pool. </p>
+        <p class="principal-text">This guide will help you to follow all the necessary steps to configure your Antminer from 0 and start mining in
+          a matter of minutes. </p>
+
+      </ion-list>
+
+      <ion-list no-lines>
+
+        <label class="text-or" style="color: green">Initial Configuration</label>
+        <div class="customHr"></div>
+
+        <p class="principal-text">Connect the Bitmain power supply to the miner. The S9 consumes 1390 Watts and employs 9 PCI-E (6-pin) power connectors
+          plus an additional PCI-E connector for the controller board.</p>
+
+        <p class="principal-text">Connect the network cable to the LAN port located in the front area of the S9. Connect the power supply to the power
+          outlet.
+        </p>
+        <p class="principal-text"> The miner will start. This process may take a few minutes.</p>
+
+        <label class="text-or" style="color: green">Find your IP in your Antminer Machine</label>
+        <div class="customHr"></div>
+
+        <p class="principal-text">To find the IP address of the Antminer, you need to start your miner and connect it to the router using the cable
+          of LAN network. Once the miner connects to the Internet, it will generate its own IP address. </p>
+
+        <p class="principal-text"> To configure the miner, you must log in to that IP address through your Internet browser from a PC From the configuration
+          page of the router we can determine the IP of the S9, or through an IP browser program, as we will see below. </p>
+
+        <p class="principal-text"> Download the Advanced IP Address Scanner. Install the IP scanner and once open press "start" to start scanning. If
+          you are using a LAN cable to access the Internet, you will see the name "Antminer" in the IP scanner. </p>
+
+        <p class="principal-text">You are using WiFi, you will probably not see any name, but you can see the address of Manufacturing            or
+          Mac to identify which one is the Antminer. The manufacturer of Antminer is listed as "Texas Instruments",         
+          and the MAC address always starts with "84: EB: ...". Once you have determined the Antminer IP address,         
+          copy and paste the address in the URL of your browser.</p>
+
+      </ion-list>
+
+      <label class="text-or" style="color: green">Accessing the Antminer interface</label>
+      <div class="customHr"></div>
+
+      <p class="principal-text">When you access the Antminer interface for the first time, you will be asked for a password.</p>
+      <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/miner-login.png">
+
+      <p class="principal-text">The default factory logon of S9 is as follows:</p>
+
+      <p class="principal-text">Username: root</p>
+      <p class="principal-text">Password: root</p>
+
+      <p class="principal-text">Once inside, from the "System" tab you can check the current status of the miner: the activity, speed of          hash,
+        core temperature and frequency, among other statistics. </p>
+
+      <p class="principal-text">As you can see there are other tabs available: "Miner Configuration", "Miner Status" and "Network". To configure        
+        S9 accesses the "Miner Configuration" tab and then click on "General Settings". From here we go          to connect
+        the Antminer to a mining pool.</p>
+    </ion-card-content>
+
+    <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/miner-config.png">
+
+    <p class="principal-text">The AntMiner S9 can be configured with three mining pools, with a decreasing priority from the first group (pool      
+      1) to the third group (pool 3). In each section we will see 3 boxes to fill in: Pool URL: enter the URL of your      
+      Mining pool Worker: the ID of your team in the selected pool Password: a password for your team (it is not necessary)
+             To complete this data, we must open an account in a mining pool. Next we will see how to configure        the
+      miner with the mining pools of Antpool and Slushpool.</p>
+
+    <label class="text-or" style="color: green">Configuration with Antpool</label>
+    <div class="customHr"></div>
+
+    <p class="principal-text">To register in Antpool you must first create a new user account through Bitmain (the Antpool website)        it will
+      redirect us automatically). </p>
+
+    <p class="principal-text"> Enter your email address and a valid password. You will be sent an email to the email address that you indicated      
+      with an activation link. Click on the link to confirm your email address. </p>
+
+    <p class="principal-text">Next, you must indicate a mobile phone number. Choose your country of residence, enter your mobile number,        and
+      click on "send SMS". You must receive a code, enter it in the corresponding box (Sms code) and click        in "Creatte
+      account".</p>
+
+    <p class="principal-text">Now enter the home page (or "Dashboard") of your Antpool account. From here we will have several options available,      
+      how to verify the number of connected workers, our balance of payments, etc.</p>
+
+    <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/ant1.jpg">
+
+    <p class="principal-text">To be able to mine in Antpool we must create a sub-account. To do so, go to "Settings" and then "Add Sub Account".</p>
+
+    <p class="principal-text">Enter a name of your choice ("technobits", "johndoe", etc) and click on "Create". This pseudonym will serve to      
+      identify our miner in the Antpool pool.</p>
+
+    <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/wal2.jpg">
+
+    <p class="principal-text">Once created, click on the "Edit" button. In the "Wallet Address" option insert your Bitcoin address. </p>
+
+    <p class="principal-text">If you have not yet obtained a wallet address, you can create one in Coinbase through the following link: https://www.coinbase.com/join/595fa92a254a9e01a5819350
+    </p>
+
+    <p class="principal-text">In the "Payments" option, select PPS if you are going to undermine irregularly or PPLNS if you plan to mine consistently
+             The 24 hours of the day.</p>
+
+    <p class="principal-text">Now you must configure the miner with the Antpool configuration. Save the changes and go back to the Dashboard, and copy
+             the address of the Stratum servers of Antpool.</p>
+
+    <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/serverantpool.jpg">
+
+    <p class="principal-text">Go back to the S9 configuration interface (“Miner Configuration/General Settings”). </p>
+
+
+    <p class="principal-text">You will see that there are 3 groups of boxes where we must enter the data of the mining pools, these are "Pool 1", "Pool
+             2 "and" Pool 3 ". </p>
+
+    <p class="principal-text">The S9 will use the first address by default and will use the other 2 only as backup.</p>
+
+    <p class="principal-text">Copy the first address of the Stratum server from Antpool and paste it in the "URL" box.</p>
+
+    <a>stratum+tcp://stratum.antpool.com:3333</a>
+
+    <p class="principal-text">In the "Worker" box, you must first insert the name of the sub-account that you previously configured followed by a      
+      point, and then a name of your choice for the Antminer (example: "tecnobits.worker1", "johndoe.worker1",        etc)
+    </p>
+
+
+    <p class="principal-text">URL: stratum+tcp://stratum.antpool.com:3333 </p>
+
+
+    <p class="principal-text">Fill in the other boxes with the address of servers 2 and 3 of Antpool and the name of your sub-account, and finally
+             click on Save.</p>
+
+
+    <img class="myphoto" src="https://tecnobits.xyz/wp-content/uploads/2017/10/s9antpool1.jpg">
+
+    <p class="principal-text">You're almost finished Now you can check from the "Miner Status" tab that the team is mining correctly.        After
+      10 minutes or so, you can see the Antwerp hashrate from the "Worker" tab on the Antpool website.</p>
+
+    <ion-list no-lines>
+
+      <label class="text-or" style="color: green">Video</label>
+      <div class="customHr"></div>
+
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ryInEJaiAHw" frameborder="0" allow="autoplay; encrypted-media"
+          allowfullscreen></iframe>
+      </div>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+      <div text-center style="color: white" (click)="backPage()"><p>⇦ Go to tutorial page</p></div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,3 +1,4 @@
+
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
@@ -11,6 +12,23 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
+a{
+  background: #19232C !important;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+  color: #488aff !important;
+}
+.tabs-md .tab-button-icon{
+  color: white !important;
+}
+
+ion-list {
+  padding: .2em 0em !important;
+}
+ion-note {
+  color:  !important;
+}
 
 @import "ionic.globals";
 
@@ -22,8 +40,8 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
-
+$toolbar-background: #19232C;
+$background-color: #19232C;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -37,8 +55,9 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  bluetxt:    #72C2F7,
+  light:      #C1E6FF,
+  dark:       #222,
 );
 
 

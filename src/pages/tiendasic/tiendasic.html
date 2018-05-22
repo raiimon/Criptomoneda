@@ -1,0 +1,69 @@
+<ion-header class="background-header">
+  <ion-toolbar transparent>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>GPU Shop</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="cesta()">
+        <ion-item>
+          <ion-icon style="color: white" name="ios-cart"></ion-icon>
+          <!-- {{addcest.legth}} cada vez que le demos añadir a la cesta
+               se incrementara y se mostrara-->
+          <ion-badge item-end color="danger">{{addcest.length}}</ion-badge>
+        </ion-item>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="chatasic()">
+
+      <ion-icon name="chatbubbles"></ion-icon>
+
+    </button>
+  </ion-fab>
+
+  <ion-refresher style="color: white; background-color: white" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+
+  <ion-list>
+
+
+    <ion-item class="text-or" *ngFor="let products of all">
+
+      <ion-card class="card-login-shop">
+        <img style="margin-top: 5%" src="{{products.image}}" id="logo" />
+
+        <ion-card-content>
+          <p style="color: tomato">{{products.name }}</p>
+          <ion-card-header>
+            <button ion-button color="light" icon-start>
+              {{products.price}}€
+            </button>
+          </ion-card-header>
+
+        </ion-card-content>
+        <div>
+          <!-- add (products) -> hace referencia a al products del for. -->
+          <button ion-button style="color: tomato;background: transparent !important" icon-start (click)="add(products)">
+            <ion-icon name="cart"></ion-icon>
+            Añadir a la cesta
+          </button>
+        </div>
+
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

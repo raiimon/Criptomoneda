@@ -1,19 +1,32 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner"></div>
+</div>
+
+<!--Side Menu with avatar-->
+<ion-menu [content]="content" id="menu-avatar">
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+    <div #header>
+      <ion-row style="align-items:center;">
+        <ion-col col-3>
+        </ion-col>
+        <ion-col col-6>
+          <img class="user-avatar round" [src]="chosenPicture || placeholder" onerror="this.src='https://image.flaticon.com/icons/svg/148/148909.svg'"
+          />
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-list no-lines>
+      <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon style="color: white" [name]="p.icon" item-left></ion-icon>
         {{p.title}}
       </button>
     </ion-list>
   </ion-content>
-
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

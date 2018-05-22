@@ -1,0 +1,33 @@
+page-tiendagrafic {
+  #logo {
+    max-width: 60% !important;
+    margin: auto;
+  }
+  p{
+    font-size: 7px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    align-content: center;
+    margin: auto;
+    color: black;
+  }
+
+  div{
+   text-align: center;
+    margin: auto;
+
+  }
+  #refresh {
+    position: absolute;
+    float:right;
+    margin: auto;
+    text-align: center;
+  }
+  ion-card-content{
+    margin: auto;
+    text-align: center;
+  }
+}

@@ -1,0 +1,35 @@
+<ion-header class="background-header">
+
+  <ion-navbar transparent>
+
+    <ion-title>Live Support</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" id="messagesContent">
+  <label>{{chatCoin}}</label>
+  <div id="chatMessages">
+    <div *ngFor="let message of messages" [class]="message.payload.val().specialMessage ? 'message special':'message'">
+
+      <div [class]="message.payload.val().email != email ? 'innerMessage messageLeft ' : 'innerMessage messageRight'">
+
+        <div class="username">{{ message.payload.val().username }}</div>
+        <div class="messageContent">{{ message.payload.val().message }}</div>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+    <div id="footer">
+      <div class="elem"><ion-input type="text" placeholder="Input Type!" style="color: white" [(ngModel)]="message"></ion-input></div>
+      <div class="elem"><button ion-button icon-only style="background: red;padding: 1%" (click)="sendMessage()"><ion-icon name="send"></ion-icon> </button></div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
