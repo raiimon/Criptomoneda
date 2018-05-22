@@ -1,6 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from "angularfire2/database";
+import { LoginPage } from '../login/login';
 
 
 @IonicPage()
@@ -10,10 +12,17 @@ import { AngularFireAuth} from "angularfire2/auth";
 })
 export class RegistroPage{
 
-  @ViewChild('username') user;
-  @ViewChild('password') password;
+  name: string;
+  password: string;
+  email:string;
+  surname :string;
 
-  constructor(private alertCtrl: AlertController,private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(private alertCtrl: AlertController,
+              private fire: AngularFireAuth,
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private db : AngularFireDatabase) {
   }
 
   ionViewDidLoad() {
@@ -30,7 +39,7 @@ export class RegistroPage{
 
   registerUser(){
 
-    this.fire.auth.createUserAndRetrieveDataWithEmailAndPassword(this.user.value, this.password.value)
+    this.fire.auth.createUserAndRetrieveDataWithEmailAndPassword(this.email, this.password)
       .then(data =>{
 
         console.log('got data',data);
@@ -42,6 +51,17 @@ export class RegistroPage{
         this.alert(error.message);
 
       });
-     console.log('registered user whith ', this.user.value, this.password.value);
+
+    this.db.database.ref('usuario/'+this.email.split(".")).set({
+      surname: this.surname,
+      name: this.name,
+      password: this.password,
+      email: this.email,
+    });
+  }
+
+  goBack(){
+    this.navCtrl.push(LoginPage);
+
   }
 }
