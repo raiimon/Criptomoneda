@@ -1,3 +1,4 @@
+
 import {Component, ViewChild, NgZone} from '@angular/core';
 import {IonicPage, LoadingController, NavController, NavParams, AlertController,MenuController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -135,9 +136,6 @@ loginUser(): void {
         })
         .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
       }).catch(err => console.error("Error: ", err));
-
-      this.navCtrl.setRoot( PrincipalPage );
-
   }
 
 async webGoogleLogin(): Promise<void> {

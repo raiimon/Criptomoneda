@@ -32,6 +32,8 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "angularfire2": "^5.0.0-rc.6",
     "chart.js": "^2.7.2",
+    "cordova-android": "7.0.0",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-email-composer": "^0.8.15",
     "cordova-plugin-googleplus": "^5.3.0",
@@ -66,6 +68,9 @@
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.95318396732-jh8n8o6nklphuglagt41e7b94dhkr3em"
       }
     },
-    "platforms": []
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

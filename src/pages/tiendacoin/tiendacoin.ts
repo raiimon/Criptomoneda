@@ -5,6 +5,11 @@ import {CestaPage} from "../cesta/cesta";
 import {DataProvider} from "../../providers/data/data";
 import {ChatcoinPage} from '../chatcoin/chatcoin';
 
+/**
+ * Ramon casaña martinez
+ */
+
+
 @IonicPage()
 @Component({
   selector: 'page-tiendacoin',

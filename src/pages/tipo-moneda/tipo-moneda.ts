@@ -115,7 +115,7 @@ import { PrincipalPage } from '../principal/principal';
     }
 
     backPage(){
-      this.navCtrl.setRoot(PrincipalPage);
+      this.navCtrl.push(PrincipalPage);
     }
 
   }

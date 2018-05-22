@@ -5,6 +5,7 @@ import { AngularFireDatabase } from "angularfire2/database";
 import { MapsPage } from '../maps/maps';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { LoginPage } from '../login/login';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 
@@ -27,6 +28,7 @@ export class AjustesPage {
               private alertCtrl: AlertController,
               public navParams: NavParams,
               public aut: AngularFireAuth,
+              private storage: Storage,
               public db: AngularFireDatabase,
               private googlePlus: GooglePlus,
               public menu: MenuController,
@@ -85,6 +87,7 @@ export class AjustesPage {
 
   async logout(): Promise<any> {
     if (this.aut.auth.currentUser != null) {
+      this.storage.remove('likedCoins');
       this.navCtrl.setRoot(LoginPage);
       this.googlePlus.logout();
       return this.aut.auth.signOut();

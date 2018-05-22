@@ -29,7 +29,6 @@
                 public events: Events) {
 
                   this.menu.enable(true);
-      this.storage.remove('likedCoins');
       this.events.subscribe("coin:event", () => {
         this.refreshCoins();
       })

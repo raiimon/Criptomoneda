@@ -4,6 +4,10 @@ import {AngularFireDatabase} from "angularfire2/database";
 import {CestaPage} from "../cesta/cesta";
 import { ChatcoinPage } from '../chatcoin/chatcoin';
 
+/**
+ * Ramon casaña martinez
+ */
+
 @IonicPage()
 @Component({
   selector: 'page-tiendagrafic',
