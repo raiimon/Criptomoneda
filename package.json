@@ -22,6 +22,8 @@
     "@angular/platform-browser": "5.2.9",
     "@angular/platform-browser-dynamic": "5.2.9",
     "@ionic-native/core": "4.5.3",
+    "@ionic-native/email-composer": "^4.7.0",
+    "@ionic-native/google-plus": "^4.7.0",
     "@ionic-native/splash-screen": "4.5.3",
     "@ionic-native/status-bar": "4.5.3",
     "@ionic/pro": "1.0.20",
@@ -30,8 +32,9 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "angularfire2": "^5.0.0-rc.6",
     "chart.js": "^2.7.2",
-    "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-email-composer": "^0.8.15",
+    "cordova-plugin-googleplus": "^5.3.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -57,10 +60,12 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-email-composer": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.95318396732-jh8n8o6nklphuglagt41e7b94dhkr3em"
+      }
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }
