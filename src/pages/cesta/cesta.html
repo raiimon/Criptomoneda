@@ -1,0 +1,60 @@
+<ion-header class="background-header">
+  <ion-toolbar transparent>
+  <ion-title>Shop Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card class="card-login">
+
+
+
+    <ion-card-header style="color: tomato; text-align: center; font-size: 125%">
+      Products List
+    </ion-card-header>
+
+    <ion-card-content style="color: white; text-align: center" *ngIf= "cestaArray.length == 0">
+      ¡ The basket it's empty !
+    </ion-card-content>
+
+    <ion-list style="background: #f53d3d">
+
+      <ion-item *ngFor="let products of cestaArray; let i = index;">
+
+        <ion-avatar item-left>
+          <img src="{{products.image}}">
+        </ion-avatar>
+        <h2 style="color: white">{{products.name}} <b> {{i+1}} </b> </h2>
+
+        <p style="color: white"> {{(products.price).toFixed(2)}}€</p>
+
+        <div>
+          <button primary large (click)="add(products)">
+            <ion-icon name="add" ></ion-icon>
+          </button>
+          <button primary large (click)="remove(products,i)">
+            <ion-icon name="remove"></ion-icon>
+          </button>
+        </div>
+
+      </ion-item>
+    </ion-list>
+    <ion-card-content>
+      <div style="color: white; text-align: center">Total for this order is <a style="background: transparent !important">{{total.toFixed(2)}} €</a></div>
+    </ion-card-content>
+
+    <ion-card-content>
+
+      <button ion-button block color="danger"
+              (click)="pagar()"
+              [disabled]="0 === cestaArray.length">Checkout
+      </button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="background-footer">
+  <ion-toolbar transparent>
+    <div text-center style="color: white" (click)="backPage()"><p>⇦ Go to shop page</p></div>
+  </ion-toolbar>
+</ion-footer>
