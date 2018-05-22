@@ -1,3 +1,35 @@
 page-tipo-moneda {
+  .background-header-coin{
+    background: #102D49;
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50%;
+  }
+  .list-md{
+    margin:0 1em;
 
+  }
+  .coinbtn {
+    background: transparent !important;
+    color: white !important;
+  }     
+  .card {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  .noResults {
+    height: 100% !important;
+    justify-content: center !important;
+    color: white !important;
+
+    p {
+      font-size: 1.2em !important;
+    }
+  }
+  .notFound {
+    font-size: 7.5em !important;
+    color: white !important;
+  }
 }

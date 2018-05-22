@@ -1,25 +1,43 @@
-<!--
-  Borja es templario
--->
-<ion-header>
-  <ion-navbar color="dark" >
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>TipoMoneda</ion-title>
-  </ion-navbar>
 
-</ion-header>
+<ion-header class="background-header-coin">
+  
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchCoins($event)" (ionCancel)="onCancelSearch()"></ion-searchbar>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+  
+    <ion-grid class="noResults" *ngIf="!filteredItems || filteredItems.length == 0">
+      <ion-row>
+        <ion-col text-center>
+          <ion-card>
+            <ion-card-header>
+              <ion-icon name="search" class="notFound"></ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+              Search the coin you are looking for! Hint: try BTC!
+            </ion-card-content>
+          </ion-card>        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-list *ngIf="filteredItems">
+      <button ion-item *ngFor="let coin of objectKeys(filteredItems)" (click)="addCoin(coin)" class="coinbtn" >
+        <ion-avatar item-start *ngIf="allcoins">
+          <img *ngIf="allcoins" [src]="'https://www.cryptocompare.com'+allcoins[coin].ImageUrl" />
+        </ion-avatar>
+        {{coin}} - {{ allcoins[coin].CoinName }}
+        <ion-icon name="checkmark-circle" color="primary" item-end *ngIf="likedCoins.indexOf(coin) != '-1'" ></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
 
-
-<ion-content padding>
-  <ion-searchbar (ionInput)="searchCoins($event)"></ion-searchbar>
-
-  <ion-list *ngIf="allcoins">
-    <button ion-item *ngFor="let coin of objectKeys(allcoins)" (click)="addCoin(coin)" class="coinbtn" no-lines>
-      {{coin}} - {{ allcoins[coin].CoinName }}
-      <ion-icon name="checkmark-circle" color="primary" item-end *ngIf="likedCoins.indexOf(coin) != '-1'" color="light">
-      </ion-icon>
-    </button>
-  </ion-list>
-</ion-content>
+  <ion-footer class="background-footer">
+    <ion-toolbar transparent>
+      <div text-center style="color: white" (click)="backPage()"><p>⇦ Go to main page</p></div>
+    </ion-toolbar>
+  </ion-footer>

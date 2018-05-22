@@ -1,107 +1,115 @@
-/**
- *  Ramon Casaña Martinez
- */
-
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
-import { Storage } from '@ionic/storage';
-import { Chart } from 'chart.js';
-import { LoadingController } from 'ionic-angular';
-
-import {TipoMonedaPage} from "../tipo-moneda/tipo-moneda";
-
-@IonicPage()
-@Component({
+  import { Component } from '@angular/core';
+  import { NavController, IonicPage, Events, MenuController } from 'ionic-angular';
+  import { DataProvider } from '../../providers/data/data';
+  import { Storage } from '@ionic/storage';
+  import { Chart } from 'chart.js';
+  import { LoadingController } from 'ionic-angular';
+  import { TipoMonedaPage } from '../tipo-moneda/tipo-moneda';
+  @IonicPage()
+  @Component({
   selector: 'page-principal',
   templateUrl: 'principal.html',
-})
-export class PrincipalPage {
+  })
+  export class PrincipalPage {
 
-  email: string;
+    detailToggle = [];
+    objectKeys = Object.keys;
+    coins: Object;
+    details: Object;
+    likedCoins = [];
+    chart = [];
+    raw = [];
+    allcoins:any;
 
-  detailToggle = [];
-  objectKeys = Object.keys;
-  coins: Object;
-  details: Object;
-  likedCoins = [];
-  chart = [];
+    constructor(public navCtrl: NavController,
+                private _data: DataProvider,
+                private storage: Storage,
+                public loading: LoadingController,
+                public menu: MenuController,
+                public events: Events) {
 
+                  this.menu.enable(true);
+      this.storage.remove('likedCoins');
+      this.events.subscribe("coin:event", () => {
+        this.refreshCoins();
+      })
 
-  constructor(public loading: LoadingController,
-              private storage: Storage,
-              private data: DataProvider,
-              public navCtrl: NavController,
-              public navParams: NavParams) {
+    }
 
-    this.storage.remove('likedCoins');
-    // saca el correo de la base de datos
+    ionViewDidLoad() {
+      let loader = this.loading.create({
+        content: 'Loading...',
+        spinner: 'bubbles'
+      });
 
-  }
+      loader.present().then(() => {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PrincipalPage');
-  }
-  ionViewWillEnter() {
-    this.refreshCoins();
-  }
+        this._data.allCoins()
+          .subscribe(res => {
+            this.raw = res['Data'];
+            this.allcoins = res['Data'];
 
-  refreshCoins() {
+            loader.dismiss();
 
-    let loader = this.loading.create({
-      content: 'Refreshing..',
-      spinner: 'bubbles'
-    });
+          })
+      });
+      this.refreshCoins();
+    }
+    refreshCoins() {
 
-    loader.present().then(() => {
+      let loader = this.loading.create({
+        content: 'Loading...',
+        spinner: 'bubbles'
+      });
 
-      this.storage.get('likedCoins').then((val) => {
+      loader.present().then(() => {
 
-        // If the value is not set, then:
-        if(!val) {
-          this.likedCoins.push('BTC','ETH','LTC');
-          this.storage.set('likedCoins', this.likedCoins);
+        this.storage.get('likedCoins').then((val) => {
 
-          this.data.getCoins(this.likedCoins)
+          // If the value is not set, then:
+          if(!val) {
+            this.likedCoins.push('BTC','ETH','LTC','XRP');
+            this.storage.set('likedCoins', this.likedCoins);
+
+            this._data.getCoins(this.likedCoins)
+              .subscribe(res => {
+                this.coins = res;
+                loader.dismiss();
+              })
+          }
+          // It's set
+          else {
+            this.likedCoins = val;
+
+            this._data.getCoins(this.likedCoins)
             .subscribe(res => {
               this.coins = res;
               loader.dismiss();
             })
-        }
-        // It's set
-        else {
-          this.likedCoins = val;
+          }
 
-          this.data.getCoins(this.likedCoins)
-            .subscribe(res => {
-              this.coins = res;
-              loader.dismiss();
-            })
-        }
+        });
 
       });
 
-    });
+    }
 
-  }
+    coinDetails(coin,index) {
 
-  coinDetails(coin,index) {
+      if (this.detailToggle[index])
+        this.detailToggle[index] = false;
+      else {
+        this.detailToggle.fill(false);
+        this._data.getCoin(coin)
+          .subscribe(res => {
+            this.details = res['DISPLAY'][coin]['USD'];
 
-    if (this.detailToggle[index])
-      this.detailToggle[index] = false;
-    else {
-      this.detailToggle.fill(false);
-      this.data.getCoin(coin)
-        .subscribe(res => {
-          this.details = res['DISPLAY'][coin]['USD'];
+            this.detailToggle[index] = true;
 
-          this.detailToggle[index] = true;
-
-          this.data.getChart(coin)
+            this._data.getChart(coin)
             .subscribe(res => {
 
-              console.log(res);
-
+         //     console.log(res);
               let coinHistory = res['Data'].map((a) => (a.close));
 
               setTimeout(()=> {
@@ -110,23 +118,23 @@ export class PrincipalPage {
                   data: {
                     labels: coinHistory,
                     datasets: [{
-                      data: coinHistory,
-                      borderColor: "#3333ba",
-                      fill: false
-                    }
+                        data: coinHistory,
+                        borderColor: "#3cba9f",
+                        fill: false
+                      }
                     ]
                   },
                   options: {
                     tooltips: {
                       callbacks: {
-                        label: function(tooltipItems, data) {
-                          return "$" + tooltipItems.yLabel.toString();
+                          label: function(tooltipItems, data) {
+                              return "$" + tooltipItems.yLabel.toString();
+                          }
                         }
-                      }
-                    },
-                    responsive: true,
-                    legend: {
-                      display: false
+                      },
+                      responsive: true,
+                      legend: {
+                        display: false
                     },
                     scales: {
                       xAxes: [{
@@ -143,36 +151,42 @@ export class PrincipalPage {
             });
 
 
-        });
+          });
 
+
+        }
 
     }
 
-  }
+    swiped(index) {
+      this.detailToggle[index] = false;
+    }
 
-  swiped(index) {
-    this.detailToggle[index] = false;
-  }
+    removeCoin(coin) {
+      this.detailToggle.fill(false);
 
-  // para borrar las monedas que tengamos en la lista
+      this.likedCoins = this.likedCoins.filter(function(item) {
+        return item !== coin
+      });
 
-  removeCoin(coin) {
-    this.detailToggle.fill(false);
+      this.storage.set('likedCoins', this.likedCoins);
 
-    this.likedCoins = this.likedCoins.filter(function(item) {
-      return item !== coin
-    });
+      setTimeout(() => {
+        this.refreshCoins();
+      }, 300);
+    }
 
-    this.storage.set('likedCoins', this.likedCoins);
+    showSearch() {
+      this.navCtrl.setRoot(TipoMonedaPage);
+    }
 
-    // el tempo de espera
-
-    setTimeout(() => {
+    doRefresh(refresher) {
+   //   console.log('Begin async operation', refresher);
       this.refreshCoins();
-    }, 300);
-  }
-  showSearch() {
-    this.navCtrl.push(TipoMonedaPage);
-  }
+      setTimeout(() => {
+    //    console.log('Async operation has ended');
+        refresher.complete();
+      }, 500);
+    }
 
-}
+  }

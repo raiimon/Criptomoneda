@@ -1,88 +1,121 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
-import { Storage } from '@ionic/storage';
-import { LoadingController } from 'ionic-angular';
+  import { Component } from '@angular/core';
+  import { IonicPage, NavController, NavParams, Events, ToastController, MenuController } from 'ionic-angular';
+  import { DataProvider } from '../../providers/data/data';
+  import { Storage } from '@ionic/storage';
+  import { LoadingController } from 'ionic-angular';
+import { PrincipalPage } from '../principal/principal';
 
-/**
- * Generated class for the TipoMonedaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+  @IonicPage()
+  @Component({
+    selector: 'page-tipo-moneda',
+    templateUrl: 'tipo-moneda.html',
+  })
+  export class TipoMonedaPage {
 
-@IonicPage()
-@Component({
-  selector: 'page-tipo-moneda',
-  templateUrl: 'tipo-moneda.html',
-})
-export class TipoMonedaPage {
+    objectKeys = Object.keys;
+    likedCoins = [];
+    raw = [];
+    liked = [];
+    allcoins:any;
+    filteredItems: any;
+    searchTerm: string;
 
+    constructor(private storage: Storage,
+                private _data: DataProvider,
+                public loading: LoadingController,
+                public navCtrl: NavController,
+                public navParams: NavParams,
+                public events: Events,
+                private toastCtrl: ToastController,
+                public menu: MenuController) {
+                  this.menu.enable(false);
+                }
 
-  objectKeys = Object.keys;
-  likedCoins = [];
-  raw = [];
-  liked = [];
-  allcoins:any;
+    ionViewWillLeave() {
+      this.events.publish('coin:event');
+    }
 
-  constructor(private storage: Storage,
-              private data: DataProvider,
-              public loading: LoadingController,
-              public navCtrl: NavController,
-              public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    let loader = this.loading.create({
-      content: 'Refreshing..',
-      spinner: 'bubbles'
-    });
-
-    loader.present().then(() => {
-
-      this.storage.get('likedCoins').then((val) => {
-        this.likedCoins = val;
+    ionViewDidLoad() {
+      let loader = this.loading.create({
+        content: 'Loading Coins..',
+        spinner: 'bubbles'
       });
 
-      this.data.allCoins()
-        .subscribe(res => {
-          console.log(res);
-          this.raw = res['Data'];
-          this.allcoins = res['Data'];
+      loader.present().then(() => {
 
-          loader.dismiss();
+        this.storage.get('likedCoins').then((val) => {
+          this.likedCoins = val;
+        });
 
-          this.storage.get('likedCoins').then((val) => {
-            this.liked = val;
+        this._data.allCoins()
+          .subscribe(res => {
+            this.raw = res['Data'];
+            this.allcoins = res['Data'];
+
+            loader.dismiss();
+
+            this.storage.get('likedCoins').then((val) => {
+              this.liked = val;
+            })
+
           })
+      });
+    }
 
-        })
-    });
-  }
-
-  addCoin(coin) {
-    this.likedCoins.push(coin);
-    this.storage.set('likedCoins',this.likedCoins);
-  }
-
-  searchCoins(ev: any) {
-
-    let val = ev.target.value;
-
-    this.allcoins = this.raw;
-
-    if (val && val.trim() != '') {
-
-      const filtered = Object.keys(this.allcoins)
-        .filter(key => val.toUpperCase().includes(key))
-        .reduce((obj,key) => {
-          obj[key] = this.allcoins[key];
-          return obj;
-        }, {});
-
-      this.allcoins = filtered;
+    addCoin(coin) {
+      if (this.likedCoins.includes(coin)) {
+        let index = this.likedCoins.indexOf(coin);
+        this.likedCoins.splice(index, 1);
+        this.storage.set('likedCoins',this.likedCoins);
+        this.showToast(this.allcoins[coin].CoinName, 'removed')
+      }
+      else {
+        this.likedCoins.push(coin);
+        this.storage.set('likedCoins',this.likedCoins);
+        this.showToast(this.allcoins[coin].CoinName, 'added')
+      }
 
     }
-  }
 
-}
+    showToast(msg: string, action: string) {
+      let toast = this.toastCtrl.create({
+        message: msg + ' was ' + action + ' successfully',
+        duration: 3000,
+        position: 'bottom'
+      });
+
+      toast.present();
+    }
+
+    searchCoins() {
+
+      this.allcoins = this.raw;
+
+      if (this.searchTerm && this.searchTerm.trim() != '') {
+
+        const filtered = Object.keys(this.allcoins)
+          .filter(key => this.searchTerm.toUpperCase().includes(key))
+          .reduce((obj,key) => {
+            obj[key] = this.allcoins[key];
+            return obj;
+          }, {});
+
+        this.allcoins = filtered;
+        this.filteredItems = filtered
+
+      }
+
+      else {
+        this.filteredItems = [];
+      }
+    }
+
+    onCancelSearch() {
+      this.filteredItems = [];
+    }
+
+    backPage(){
+      this.navCtrl.setRoot(PrincipalPage);
+    }
+
+  }
