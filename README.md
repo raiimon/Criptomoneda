@@ -1,9 +1,9 @@
 # CryptoMine
 
 
-  ![Alt Text]<p align="center">
+  ![Alt Text]
     (https://im.ezgif.com/tmp/ezgif-1-7891dfbad5.gif)
-</p>
+
 
 
 Getting Started
