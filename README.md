@@ -1,7 +1,6 @@
 # CryptoMine
 
 
--![hyper](https://im.ezgif.com/tmp/ezgif-1-7891dfbad5.gif)
 +<p align="center">
 +<img src="https://im.ezgif.com/tmp/ezgif-1-7891dfbad5.gif"/>
 +</p>
