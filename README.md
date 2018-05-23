@@ -1,7 +1,7 @@
 # CryptoMine
 
 
-![Alt Text](https://im.ezgif.com/tmp/ezgif-1-7b35082b44.gif)
+![Alt Text](https://im.ezgif.com/tmp/ezgif-1-4f5bbb2a42.gif)
 
 
 Getting Started
