@@ -1,7 +1,7 @@
 # CryptoMine
 
 
-<img src="https://im.ezgif.com/tmp/ezgif-1-7891dfbad5.gif"/>
+<img src="https://media.giphy.com/media/2zcml7rJKuy9hQJfCh/giphy.gif"/>
 
 
 Getting Started
